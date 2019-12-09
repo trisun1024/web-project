@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Shopping Cart</title>
+	<meta name="viewport" content="width=device-width, initial-scale=0.6">
+	<link rel="stylesheet" href="/style_admin.css">
+	<link rel="stylesheet" href="/cart.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.7.9/angular-cookies.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+
+<div class="wrap">
+    <h1>
+        Like More
+    </h1>
+
+    <div class="nav_top">
+        <div class="nav">
+            <ul>
+                <li><a href="/home">Homepage</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/communities">Communities</a></li>
+              <li style="float:right"><a href="/profile">Profile</a></li>
+              <li style="float:right"><a href="/logoff">Logoff</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+  
+     <div id="iambr">
+      <br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br />
+    <br />
+    </div>
+
+
+<main role="main">
+	<div class="container">
+    
+    <input type="hidden" id="uid" name="uid" value="<%= uid %>">
+		
+		<section id="cart" ng-repeat="product in products">
+			<article class="product">
+				<header>
+					<a href="/product/{{product.product}}">
+						<img alt="" src="{{product.pic}}">
+					</a>
+				</header>
+				
+				<div class="content">
+					
+					<h1>{{ product.name }}</h1>
+				
+				</div>
+				
+				<footer class="content">
+					<button class="qt-minus" ng-disabled="product.count === 0"
+					        ng-click="dec()">-
+					</button>
+					<span class="qt">{{product.count}}</span>
+					<button class="qt-plus" ng-click="inc()">+</button>
+					
+					<h2 class="full-price">
+						{{product.price * product.count}}$
+					</h2>
+					
+					<h2 class="price">
+						{{product.price}}
+					</h2>
+				</footer>
+			</article>
+		
+		</section>
+	
+	</div>
+	
+	<footer id="site-footer">
+		<div class="container">
+			
+			<div class="left">
+				<h2 class="subtotal">Subtotal: <span>{{subTotal}}</span>$</h2>
+				<h3 class="tax">Taxes (5%): <span>{{taxes.toFixed(2)}}</span>$</h3>
+				<h3 class="shipping">Shipping: <span>{{shipping.toFixed(2)}}</span>$</h3>
+			</div>
+			
+			<div class="right">
+				<h1 class="total">Total: <span>{{total.toFixed(2)}}</span>$</h1>
+				<button type="submit" class="btn" ng-click="checkout()" ng-disabled="products.length === 0">Checkout</button>
+<!--         <button type="submit" class="btn" ng-click="checkout()">Checkout</button> -->
+			</div>
+		
+		</div>
+	</footer>
+</main>
+
+<script>
+	const app = angular.module("myApp", ['ngCookies']);
+	
+	app.controller('myCtrl', function ($scope, $http, $cookies, $window ) {
+    $scope.uid = angular.element(document.getElementById('uid')).val();
+    $scope.subTotal = 0;
+		$scope.taxes = 0;
+		$scope.shipping = 0;
+		$http.get('/api/cart/user/' + $scope.uid).then(function (response) {
+			$scope.products = response.data;
+			$scope.products.forEach(
+				(product) => $scope.subTotal += product.count * product.price
+			);
+			$scope.taxes = $scope.subTotal * 0.05;
+			if ($scope.subTotal === 0) $scope.shipping = 0;
+			$scope.total = $scope.subTotal + $scope.taxes + $scope.shipping;
+			$scope.dec = function () {
+				this.product.count -= 1;
+				$scope.subTotal -= this.product.price;
+				$scope.taxes = $scope.subTotal * 0.05;
+        if ($scope.subTotal === 0) $scope.shipping = 0;
+				$scope.total = $scope.subTotal + $scope.taxes + $scope.shipping;
+			};
+			$scope.inc = function () {
+				this.product.count += 1;
+				$scope.subTotal += this.product.price;
+				$scope.taxes = $scope.subTotal * 0.05;
+        if ($scope.subTotal === 0) $scope.shipping = 0;
+				$scope.total = $scope.subTotal + $scope.taxes + $scope.shipping;
+        // console.log($scope.products);
+			};
+		});
+		$scope.checkout = function () {
+			$http.post('/auth/checkout', {products: $scope.products})
+				.then(function (res) {
+					// console.log('success');
+        $scope.hasPosted = true;
+          $window.location.href = '/profile';
+				}, function (res) {
+					console.log('failed')
+				});
+		};
+	})
+</script>
+
+</body>
+</html>

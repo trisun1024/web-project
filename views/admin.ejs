@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style_admin.css">
+
+
+</head>
+<body>
+
+<%- include('nav-admin'); -%>
+
+<br>
+
+
+<div class="user" id="user">
+    <div class="nav_top">
+        <div class="nav">
+            <ul>
+
+                <li>
+        <a class="float-right" href="/admin/form/user" title="Add a New User">Add a User</a>
+              </li></ul></div></div><br>
+    <div class="user-table">
+        <table id="user-table">
+            <tr>
+                <th>User ID</th>
+                <th>User Email</th>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>Profile</th>
+                <th>Class</th>
+                <th></th>
+            </tr>
+            <% if(users) { %>
+                <% users.forEach(function(user){ %>
+
+                    <tr>
+                        <td> <%= user.id %></td>
+                        <td> <%= user.email %></td>
+                        <td> <%= user.username %></td>
+                        <td> <%= user.password %></td>
+                        <td><img class="profile" src="<%= user.profile %>"></td>
+                        <td> <%= user.class %></td>
+                        <td>
+                            <a href="/admin/form/user/<%= user._id %>" class="">Edit</a>
+                            <a href="/delete/user/<%= user._id %>"
+                               class="">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </table>
+    </div>
+</div>
+
+<div class="products" id="products">
+    <div class="nav_top">
+        <div class="nav">
+            <ul>
+
+                <li>
+        <a class="float-right" href="/admin/form/product" title="Add a New Product">Add a Product</a>
+              </li></ul></div></div>
+  <br>
+    <div class="product-table">
+        <table id="product-table">
+            <tr>
+                <th>Description</th>
+                <th>Product Name</th>
+                <th>Rating</th>
+                <th>Reviews</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Product Link</th>
+                <th>Style</th>
+                <th>Product Image</th>
+                <th></th>
+            </tr>
+            <% if(products) { %>
+                <% products.forEach(function(product){ %>
+
+                    <tr>
+                        <td> <%= product.description %></td>
+                        <td> <%= product.name %></td>
+                        <td> <%= product.rating %></td>
+                        <td> <%= product.reviewcount %>"></td>
+                        <td> <%= product.price %></td>
+                        <td> <%= product.stock %>"></td>
+                        <td> <%= product.product_link %>"></td>
+                        <td> <%= product.style %>"></td>
+                        <td><img class="profile" src="<%= product.pic[0] %>"></td>
+                        <td>
+                            <a href="/admin/form/product/<%= product._id %>" class="button">Edit</a>
+                            <a href="/delete/product/<%= product._id %>"
+                               class="button">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </table>
+    </div>
+
+
+</div>
+
+
+<script src="https://button.glitch.me/button.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

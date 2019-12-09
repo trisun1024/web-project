@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=0.6">
+  <link rel="stylesheet" href="/style_admin.css">
+	<link rel="stylesheet" href="/login.css">
+	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrap">
+    <h1>
+        Like More
+    </h1>
+
+    <div class="nav_top">
+        <div class="nav">
+            <ul>
+                <li><a href="/home">Homepage</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/communities">Communities</a></li>
+<!--               <li style="float:right"><a href="/login">Login</a></li> -->
+<!--               <li style="float:right"><a href="/signup">Sign Up</a></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<form class="login" action="/auth/login" method="post">
+	<input type="email" name="email" placeholder="Email" value="<%= email %>" required>
+	<input type="password" name="password" placeholder="Password" required>
+  <pre class="error"><%= error %></pre>
+	<button>Login</button>
+	<span class="sign-up">or <a href="/signup">sign up</a></span>
+	<div class="social" style="float: right">
+		<ul class="social-login-btn">
+			<li class="facebook-btn"><a href="/auth/facebook"><i class="icon ion-logo-facebook"></i></a></li>
+			<li class="github-btn"><a href="/auth/github"><i class="icon ion-logo-github"></i></a></li>
+			<li class="google-btn"><a href="/auth/google"><img alt="google"
+			                                                   src="https://cdn.glitch.com/79e0a915-926d-4d98-8976-701d9ebb97c9%2Fgoogle.svg?v=1575762766630"></a>
+			</li>
+		</ul>
+	</div>
+</form>
+</body>
+</html>

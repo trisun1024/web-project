@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Form</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style_admin.css">
+
+
+</head>
+<body>
+  
+
+<div class="wrap">
+    <h1>
+        Like More
+    </h1>
+
+    <div class="nav_top">
+        <div class="nav">
+            <ul>
+
+                <li><a href="/admin"
+                       onclick="document.getElementById('user').style.display = 'block';document.getElementById('products').style.display = 'none';">Users</a>
+                </li>
+                <li><a href="/admin"
+                       onclick="document.getElementById('user').style.display = 'none';document.getElementById('products').style.display = 'block';">Products</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br>
+
+<form action="/edit/user/<%=user._id%>" method="post">
+    <h2>
+        User Form
+    </h2>
+  <h3><%=user._id%></h3>
+    <ul>
+        <li><label>User ID</label> <input class="input" name="id" required value="<%= user.id %>"/></li>
+        <li><label>Email</label> <input class="input" name="email" required value="<%= user.email %>"/></li>
+        <li><label>Password</label> <input class="input" name="password" required value="<%= user.password %>"/></li>
+        <li><label>User Name</label> <input class="input" name="username" required value="<%= user.username %> "/></li>
+        <li><label>Profile</label> <input class="input" name="profile" required value="<%= user.profile %>"/></li>
+        <li><label>Class</label> <input class="input"  name="class" required value="<%= user.class %>"/></li>
+        <li><button>Submit</button></li>
+    </ul>
+</form>
+<script src="https://button.glitch.me/button.js"></script>
+</body>
+</html>
+
+

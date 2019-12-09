@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Welcome to Glitch!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/client.js" defer></script>
+  </head>
+  <body>
+  <div class="wrap">
+    <h1>
+        Like More
+    </h1>
+
+    <div class="nav_top">
+        <div class="nav">
+            <ul>
+                <li><a href="/home">Homepage</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/communities">Communities</a></li>
+              <li style="float:right" class="cart"><a href="/cart">Cart</a></li>
+                <li style="float:right" class="profile"><a href="/profile">Profile</a></li>
+                <li style="float:right" class="logoff"><a href="/logoff">Logoff</a></li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+   <div class="wrapper">
+     
+  
+  <div class="box b" ><%= product.name %>
+     <br>
+     <div class="box e"><h2>
+     <h4> <a href="#review"> 
+        
+        Review</a>:<% for (i = 0; i < Math.round(product.rating); i++) { -%>
+    ★
+ <% } -%> 
+      <% for (i = 0; i < 5-Math.round(product.rating); i++) { -%>
+    ✰
+ <% } %>
+      
+      
+      <span id="inside">
+      out of <%= product.reviewcount %>reviews
+      </span>
+       </h4>
+      </h2>
+     <h2 >
+       $<%= product.price %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="text-decoration:line-through;color:grey;">$<%= product.price+20 %></span> 
+      </h2>
+        <form action="/cart/" method="post">
+          <input class="input" id="name" name="name"  value="<%=product.name%>" style="display:none"/>
+          <input class="input" id="product" name="product"  value="<%=product._id%>" style="display:none"/>
+          <input class="input" id="price" name="price"  value="<%=product.price%>" style="display:none"/>
+          <input class="input" id="pic" name="pic"  style="display:none" value="<%=product.pic[0]%>" />
+          <input class="input" id="count" name="count"  style="display:none" value=1  />
+          <input class="input" id="user" name="user" style="display:none"  value="<%=cookie%>" />
+          <input class="buySubmit"  type="submit" id="buybutton1" value="Add to Cart" >
+          
+          
+       </form>
+    </div>
+     </div>
+     
+     
+     
+  <div class="box c"><div class="thumb">
+                        <input type="radio" name="trans" id="pic1" checked="checked"/>
+                        <label for="pic1">
+                            <img src=<%= product.pic[0]%> width="80"/>
+                        </label>
+                        <img src=<%= product.pic[0]%> width="100%"/>
+  
+                        <input type="radio" name="trans" id="pic2" />
+                        <label for="pic2">
+                            <img src=<%= product.pic[1]%> width="80"/>
+                        </label>
+                        <img src=<%= product.pic[1]%> width="100%"/>
+
+                        <input type="radio" name="trans" id="pic3"/>
+                        <label for="pic3">
+                            <img src=<%= product.pic[2]%> width="80"/>
+                        </label>
+                        <img src=<%= product.pic[2]%> width="100%"/>
+
+                        <input type="radio" name="trans" id="pic4"/>
+                        <label for="pic4">
+                            <img src=<%= product.pic[3]%> width="80"/>
+                        </label>
+                        <img src=<%= product.pic[3]%> width="100%"/>
+          </div></div>
+
+    
+    <div class="box f" style="vertical-align:text-top;"><p style="max-width:400px;"> <%= product.description[0].slice(0,360) %>...</p>     
+       <form action="/cart/" method="post">
+         <a href="#abc" class="myButton" >Read More</a>
+         <input class="input" id="name" name="name"  value="<%=product.name%>" style="display:none"/>
+          <input class="input" id="product" name="product"  value="<%=product._id%>" style="display:none"/>
+          <input class="input" id="price" name="price"  value="<%=product.price%>" style="display:none"/>
+          <input class="input" id="pic" name="pic"  value="<%=product.pic[0]%>" style="display:none"/>
+          <input class="input" id="count" name="count"  value=1 style="display:none"/>
+          <input class="input" id="user" name="user"  value="<%=cookie%>" style="display:none"/>
+          <input  type="submit" class="buySubmit" id="buybutton2" value="Add to Cart">
+      </form>
+          </div>
+     
+     
+<!--     <div class="box g">G</div> -->
+
+     <div class="box v"><iframe class="youtube-video" src=<%=product.product_link%> frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+ <div class="box h" id="abc"> <p class="full-description">
+<%= product.description[0] %>
+   </p></div>
+ <div class="box i"><img src=<%=product.pic[product.pic.length-1]%> width="100%"/>
+     </div>
+     
+    <div class="box l" id="abc"> <p class="full-description">
+<%= product.description[product.description.length-1] %>
+   </p></div>
+ <div class="box k"><img src=<%=product.pic[product.pic.length-2]%> width="100%"/>
+     </div>
+     
+     
+     
+     
+     <div class="box j"> 
+    <div class="timeline" id="review">
+ 
+  <div class="review">
+    <% comment.forEach(function(item){%>
+    <section class="card">
+      <header class="card__header">
+        <div class="review-avatar">
+          <img src="<%=item.avatar%>">
+        </div>
+        <h2 class="header__title">
+          <span class="review-username"><%= item.user%></span>
+          <span class="title__date"><%= item.date%></span>
+          
+        </h2>
+      </header>
+      <article class="card__article">
+        <p><%=item.content%></p>
+      </article>
+    </section>
+    <% })%>
+    
+    
+    
+  </div>
+</div>
+     </div>
+    <div class="box x"> 
+    <form action="/product/<%=product._id %>" method="post">
+<div>
+  <input class="input" id="user" name="user" value="<%=cookie%>" style="display:none"/>
+  <input class="input" id="product" name="product"  value="<%=product._id%>" style="display:none"/>
+  <input class="input" id="date" name="date" value="2019-12-09" style="display:none"/>
+  <input class="input" id="pic" name="pic" value="<%=product.pic[0]%>" style="display:none"/>
+  <input class="input" id="name" name="name" value="<%=product.name%>" style="display:none"/>
+  <input class="input" id="avatar" name="avatar" value="<%=user.profile%>" style="display:none"/>
+<textarea name="content" id="comments" >
+Put your review here
+</textarea>
+</div>
+<input type="submit" class="commentSubmit" value="Submit">
+</form>
+    </div>
+    
+    
+    
+</div>
+    
+    
+    
+           
+ 
+
+  </body>
+</html>
