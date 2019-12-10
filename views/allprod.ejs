@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>All products</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style_product.css">
+
+
+</head>
+<body>
+    
+       <div class="wrap">
+          <h1>
+            Like More
+          </h1>
+
+          <div class="nav_top">
+              <div class="nav">
+                  <ul>
+                      <li><a href="/home">Homepage</a></li>
+                      <li><a href="/products">Products</a></li>
+                      <li><a href="/communities">Communities</a></li>
+                      <li style="float:right"><a href="/profile">Profile</a></li>
+                      <li style="float:right"><a href="/logoff">Logoff</a></li>
+                      <li style="float:right"><a href="/cart">Cart</a></li>                  
+                  </ul>
+              </div>
+          </div>
+      </div>
+ 
+  <br><br><br>
+  <div class="section group">
+  
+  <% if(products) { %>
+        <% products.forEach(function(product){ %>
+                <div class="grids images">
+                  <a href="/product/<%= product._id %>"
+                    ><img
+                      src="<%= product.pic[0] %>"
+                  /></a>
+                  <div class="prod_text">
+                  <h3>
+                    <%= product.name %>
+                  </h3>
+                  </div>
+                  <div class="products_price">
+                    <p class="price_number">
+                      $<%= product.price %>
+                    </p>
+                  </div>
+                  <div class="add_to_cart">
+                    <h4><a href="/product/<%= product._id %>">See more details</a></h4>
+                  </div>
+                </div>
+        <% }); %>  
+  <% } %>
+    
+  </div>
+
+
+
+<script src="https://button.glitch.me/button.js"></script>
+</body>
+</html>
+
+

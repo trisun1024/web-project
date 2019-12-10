@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blogs</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style_admin.css">
+
+
+</head>
+<body>
+    
+ <div class="wrap">
+    <h1>
+        Like More
+    </h1>
+
+    <div class="nav_top">
+        <div class="nav">
+            <ul>
+                <li><a href="/home">Homepage</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/communities">Communities</a></li>
+                <li style="float:right" class="nav_right"><a href="/profile">Profile</a></li>
+                <li style="float:right" class="nav_right"><a href="/logoff">Logoff</a></li>
+                <li style="float:right" class="nav_right"><a href="/cart">Cart</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+  
+  <br><br><br>
+  
+  
+<form action="/blog" method="post">
+<h2>
+  Blog Form
+  </h2>
+  <ul>
+    <li hidden> <label>ID</label> <input class="input" name="id"  value="<%=id%>" /> </li> 
+    <li> <label>User Name</label> <input class="input" name="username" required /></li> 
+    <li> <label>Community</label> <input class="input"  name="community" required /></li> 
+    <li> <label>Title</label> <input class="input"  name="title" required /></li> 
+    <li> <label>Content</label> <input class="input" name="content" required /></li> 
+    <li> <label>Image</label> <input class="input" name="image" required /></li> 
+    <li> <label>Time</label> <input class="input" name="time" required /></li> 
+    
+    <li><button>Submit</button></li> 
+  </ul>
+</form>
+
+
+<script src="https://button.glitch.me/button.js"></script>
+</body>
+</html>
+
+
+

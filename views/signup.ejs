@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    <link rel="stylesheet" href="/style_admin.css">
+    <link rel="stylesheet" href="/login.css">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrap">
+    <h1>
+        Like More
+    </h1>
+
+    <div class="nav_top">
+        <div class="nav">
+            <ul>
+                <li><a href="/home">Homepage</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/communities">Communities</a></li>
+<!--               <li style="float:right"><a href="/login">Login</a></li> -->
+<!--               <li style="float:right"><a href="/signup">Sign Up</a></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<form class="login" action="#" method="post">
+    <input type="email" name="email" placeholder="Email" value="<%= email %>" required>
+    <input type="text" name="username" placeholder="Username" value="<%= username %>" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="password" name="confirm" id="confirm-password" placeholder="Confirm Password" required>
+    <pre class="error"><%= error %></pre>
+    <button>Sign Up</button>
+    <span class="log-in">or <a href="/login">log in</a></span>
+</form>
+
+
+</body>
+</html>

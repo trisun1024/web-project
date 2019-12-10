@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Product Form</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style_admin.css">
+
+
+</head>
+<body>
+
+
+<div class="wrap">
+    <h1>
+        Like More
+    </h1>
+
+    <div class="nav_top">
+        <div class="nav">
+            <ul>
+
+                <li><a href="/admin"
+                       onclick="document.getElementById('user').style.display = 'block';document.getElementById('products').style.display = 'none';">Users</a>
+                </li>
+                <li><a href="/admin"
+                       onclick="document.getElementById('user').style.display = 'none';document.getElementById('products').style.display = 'block';">Products</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br>
+  
+  
+<form action="/edit/product/<%=product._id%>" method="post">
+<h2>
+  Product Form
+  </h2>
+  <h3>
+    <%=product._id%>
+  </h3>
+  <ul>
+    <li> <label>Description</label> <input class="input" name="description" required value="<%=product.description%>" /> </li> 
+    <li> <label>Picture</label> <input class="input" name="pic" required value="<%=product.pic%> "/></li> 
+    <li> <label>Name</label> <input class="input"  name="name" required value="<%=product.name%> "/></li> 
+    <li> <label>Price</label> <input class="input"  name="price" required value="<%=product.price%>" /></li> 
+    <li> <label>Rating</label> <input class="input" name="rating" required value="<%=product.rating  %> "/></li> 
+    <li> <label>Review Count</label> <input class="input" name="reviewcount" required value="<%=product.reviewcount%>" /></li> 
+    <li> <label>Stock</label> <input class="input" name="stock" required value="<%=product.stock%> "/></li> 
+    <li> <label>Product Link</label> <input class="input" name="product_link" required value="<%=product.product_link%> "/></li> 
+    <li> <label>Style</label> <input class="input" name="style" required  value="<%=product.style%>" /></li> 
+    <li><button>Submit</button></li> 
+  </ul>
+</form>
+<script src="https://button.glitch.me/button.js"></script>
+</body>
+</html>
+
+

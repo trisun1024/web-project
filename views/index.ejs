@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Like More</title>
+    <meta name="description" content="A cool thing made with Glitch" />
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://glitch.com/edit/favicon-app.ico"
+      type="image/x-icon"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style_product.css" />
+
+    <!-- import the webpage's client-side javascript file -->
+<!--     <script src="/client.js" defer></script> -->
+  </head>
+  <body>
+    <main>
+       <div class="wrap">
+          <h1>
+            Like More
+          </h1>
+
+          <div class="nav_top">
+              <div class="nav">
+                  <ul>
+                      <li><a href="/home">Homepage</a></li>
+                      <li><a href="/products">Products</a></li>
+                      <li><a href="/communities">Communities</a></li>
+                      <li style="float:right" class="login"><a href="/login">Login</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <div class="wrap">
+        <div class="nav_slides">
+          
+          <div class="nav_slides_left">
+            <div class="categories">
+              <ul>
+                <h3>Categories</h3>
+                <li><a href="/products/audio">Audio</a></li>
+                <li><a href="/products/keyboards">Keyboards</a></li>
+                <li><a href="/products/everyday">Everyday carry</a></li>
+                <li><a href="/products/outdoors">Outdoors</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="nav_slides_right">
+            <div class="slide">
+              <div id="slides">
+                <div id="box">
+                  <div id="slide_1" class="slide">
+                    <div class="slide_img">
+                      <a href="/product/5dec448f76451e65d27aab3c"
+                        ><img
+                          src="https://massdrop-s3.imgix.net/product-images/massdrop-x-zslane-mercury-rocketeer-mechanical-keyboard/FP/sgyeeoeSlyZcgNUh4muA_CB5A2865-copy.jpg?auto=format&amp;fm=jpg&amp;fit=crop&amp;w=1080&amp;bg=f0f0f0&amp;dpr=1&amp;q=70"
+                      /></a>
+                    </div>
+                    <div class="slide_text">
+                      <h2>Super low price</h2>
+                      <h3>Up to 20% off</h3>
+                      <h4>heavy actuations, old-school colorways, and audible clicks and clacks, mechanical keyboards</h4>
+                      <a href="/product/5dec448f76451e65d27aab3c" class="button">Buy now</a>
+                    </div>
+                  </div>
+
+                  <div id="slide_2" class="slide">
+                    <div class="slide_img">
+                      <a href="/product/5deb3bfc8c171c20d11c264e"
+                        ><img
+                          src="https://massdrop-s3.imgix.net/product-images/massdrop-x-hifiman-he4xx-planar-magnetic-headphones/AI7B9829_copy_20170725104735.jpg?auto=format&amp;fm=jpg&amp;fit=crop&amp;w=1080&amp;bg=f0f0f0&amp;dpr=1&amp;q=70"
+                      /></a>
+                    </div>
+                    <div class="slide_text">
+                      <h2>History lowest price</h2>
+                      <h3>Up to 35% off</h3>
+                      <h4>the best-feeling, best-sounding pads the company has to offer</h4>
+                      <a href="/product/5deb3bfc8c171c20d11c264e" class="button">Buy now</a>
+                    </div>
+                  </div>
+
+                  <div id="slide_3" class="slide">
+                    <div class="slide_img">
+                      <a href="/product/5deb45e28c171c20d11c2653"
+                        ><img
+                          src="https://massdrop-s3.imgix.net/product-images/kershaw-own-it-blackwash-series-edc-starter-kit/AI7B2300%20copy_20170509114534.jpg?auto=format&amp;fm=jpg&amp;fit=crop&amp;w=1080&amp;bg=f0f0f0&amp;dpr=1&amp;q=70"
+                      /></a>
+                    </div>
+                    <div class="slide_text">
+                      <h2>Breath taking price</h2>
+                      <h3>Up to 50% off</h3>
+                      <h4>features an 8-inch folder with Kershaw’s iconic SpeedSafe assisted opening system for easy deployment</h4>
+                      <a href="/product/5deb45e28c171c20d11c2653" class="button">Buy now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br>
+          <div class="products">
+            <div class="products_top">
+              <div class="heading">
+                <h3>Tool Products</h3>
+              </div>
+              <div class="browse">
+                <p><a href="/products">Browse all products</a></p>
+              </div>
+
+              <div class="section group">
+  
+                <% if(products) { %>
+                      <% products.forEach(function(product){ %>
+                           <% if (product.style=="everyday" || product.style=="outdoors") { -%>
+                              <div class="grids images">
+                                <a href="/product/<%= product._id %>"
+                                  ><img
+                                    src="<%= product.pic[2] %>"
+                                /></a>
+                                <div class="prod_text">
+                                <h3>
+                                  <%= product.name %>
+                                </h3>
+                                </div>
+                                <div class="products_price">
+                                  <p class="price_number">
+                                    $<%= product.price %>
+                                  </p>
+                                </div>
+                                <div class="add_to_cart">
+                                  <h4><a href="/product/<%= product._id %>">See more details</a></h4>
+                                </div>
+                              </div>
+                          <% } %>
+                      <% }); %>  
+                <% } %>
+    
+              </div>
+
+            <br><br>
+            <div class="products_buttom">
+              <div class="heading">
+                <h3>Tech Products</h3>
+              </div>
+              <div class="browse">
+                <p><a href="/products">Browse all products</a></p>
+              </div>
+
+                <div class="section group">
+  
+                <% if(products) { %>
+                      <% products.forEach(function(product){ %>
+                           <% if (product.style=="audiophile" || product.style=="keyboards") { -%>
+                              <div class="grids images">
+                                <a href="/product/<%= product._id %>"
+                                  ><img
+                                    src="<%= product.pic[2] %>"
+                                /></a>
+                                <div class="prod_text">
+                                <h3>
+                                  <%= product.name %>
+                                </h3>
+                                </div>
+                                <div class="products_price">
+                                  <p class="price_number">
+                                    $<%= product.price %>
+                                  </p>
+                                </div>
+                                <div class="add_to_cart">
+                                  <h4><a href="/product/<%= product._id %>">See more details</a></h4>
+                                </div>
+                              </div>
+                          <% } %>
+                      <% }); %>  
+                <% } %>
+    
+              </div>
+            
+                        
+          </div>
+        </div>
+      </div>
+     </div>
+    </main>
+    
+    <br><br><br>
+    <script src="https://button.glitch.me/button.js"></script>
+  </body>
+</html>

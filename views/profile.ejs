@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Welcome to Glitch!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
+    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/client.js" defer></script>
+    <script>
+   function Checkpassword() {  
+       const pw = document.getElementById("password").value;
+       const pwn = document.getElementById("newpassword").value;
+       if(pw!=pwn){
+       alert("Two password should be same");
+       return false;
+       }
+       return true;
+    }
+              
+  </script>
+    
+   
+ 
+  </head>
+  
+  <body>
+  
+    
+    
+   <div class="wrap">
+    <h1>
+        Like More
+    </h1>
+
+    <div class="nav_top">
+        <div class="nav">
+            <ul>
+                <li><a href="/home">Homepage</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/communities">Communities</a></li>
+               <li style="float:right" class="logoff"><a href="/logoff">Logoff</a></li>
+              <li style="float:right" class="cart"><a href="/cart">Cart</a></li>
+               
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    <br /><br /><br /><br /><br />
+   <div id="iambr">
+      <br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br />
+    <br />
+    </div>
+    <div class="user-wrapper">
+     
+  <div  class="box usera"><img src=<%=user[0].profile%> width=80 height=80 style="border-radius:50%";/>
+      <h2>
+       <%=user[0].username%>
+    </h2>
+      <p  style="color: grey; ">
+        <%=user[0].email%>
+    </p>
+      </div>
+  <div class="box userb"><table id="tbl" border=0 width="100%" frame=void >
+    
+<tr>
+<td><%=transaction.length%></td>
+<td><%=comment.length%></td>
+<td><%=blog.length%></td>
+  <% var sum = 0;
+        transaction.forEach(function(val){
+              sum += val.price;
+        })%>
+<td>$<%=parseInt(sum) %></td>
+</tr>
+    <tr style="color: grey">
+      
+<td>transaction</td>
+<td>review</td>
+<td>blog</td>
+<td>total cost</td>
+</tr>
+    </table></div>
+  <div class="box userc">
+      
+  <a href="javascript:void(0)" class="userinfo" onclick="document.getElementById('userinfo').style.display = 'none';document.getElementById('user-transaction').style.display = 'none';document.getElementById('user-rev').style.display = 'block';document.getElementById('user-blog').style.display = 'none';">Review</a>
+  <a href="javascript:void(0)" class="userinfo" onclick="document.getElementById('userinfo').style.display = 'none';document.getElementById('user-transaction').style.display = 'block';document.getElementById('user-rev').style.display = 'none';document.getElementById('user-blog').style.display = 'none';">Transaction</a>
+  <a href="javascript:void(0)" class="userinfo" onclick="document.getElementById('userinfo').style.display = 'none';document.getElementById('user-transaction').style.display = 'none';document.getElementById('user-rev').style.display = 'none';document.getElementById('user-blog').style.display = 'block';">Blog</a>
+  <a href="javascript:void(0)" class="userinfo" onclick="document.getElementById('userinfo').style.display = 'block';document.getElementById('user-transaction').style.display = 'none';document.getElementById('user-rev').style.display = 'none';document.getElementById('user-blog').style.display = 'none';">Personal Detail</a>
+
+      
+      </div>
+  <div class="box userd" >
+    
+    
+    
+    
+    <div id="userinfo" style="display:none">
+  <form action="/profile/" method="post" class="user-detail" onsubmit="return Checkpassword()" >
+    <h1>
+      Personal Information
+      <span> Manage Your Personal Details
+      </span>
+    </h1>
+    
+    <label>
+			<span class="userlabel">User Name :</span>
+			<input id="user-name" type="text" name="username" value="<%=user[0].username%>" required maxlength="20"/>
+      
+		</label>
+    </br>
+    <label>
+			<span class="userlabel">email address :</span>
+			<input id="email-address"  type="text" name="email-address" value="<%=user[0].email%>" readonly="readonly"  />
+		</label>
+    </br>
+    <label>
+			<span class="userlabel">new password :</span>
+			<input id="password" type="text" name="password" required minlength="1" maxlength="16" />
+		</label>
+    </br>
+      
+      <label>
+			<span class="userlabel">confirm password :</span>
+			<input id="newpassword" type="text" name="newpassword" required minlength="1" maxlength="16" />
+		</label>
+    </br>
+      <input class="input" id="class" name="class"  style="display:none" value="<%=user[0].class%>" />
+      <input class="input" id="id" name="id"  style="display:none" value="<%=user[0].id%>" />
+       <input class="input" id="avatar" name="profile" style="display:none" value="<%=user[0].profile%>" />
+
+      </br>
+      <label>
+			<span>&nbsp;</span>
+			<input type="submit" class="buySubmit" value="Save" />
+		</label>
+  </form>
+    </div>
+
+
+
+<div class="user-rev" id="user-rev" style="display:none">
+ <% comment.forEach(function(item){%>
+  
+    <div class="review-cards">
+    
+        <div class="box reviewa">
+          <a href="/product/<%=item.product%>">     <img  src=<%=item.pic%> height=200> </a>
+        </div>
+        <div class="box reviewb">
+          <span class="review-username"><%=item.name%></span>
+          <span class="title__date" style="float:right">2019-03-09</span>
+          
+        </div>
+    
+      <div class="box reviewc">
+        <p><%=item.content%></p>
+      </div>
+    </div>
+  <br />
+
+    <% })%>
+  </div>
+
+<div class="user-blog" id="user-blog" style="display:none">
+ <% blog.forEach(function(item){%>
+  
+    <div class="review-cards">
+    
+        <div class="box reviewa">
+          <img src=<%=item.image%> height="200",width="200">
+        </div>
+        <div class="box reviewb">
+          <span class="review-username"><%=item.title%></span>
+          <span class="title__date" style="float:right"><%=item.time%></span>
+          
+        </div>
+    
+      <div class="box reviewc">
+        <p><%=item.content%></p>
+      </div>
+    </div>
+  <br />
+    <% })%>
+  </div>
+
+
+
+
+<div class="user-transaction" id="user-transaction" style="display:none">
+  <% transaction.forEach(function(item){%>
+    <div class="review-cards">
+        <div class="box reviewa">
+          <a href="/product/<%=item.product%>">   <img src=<%=item.pic%> height="200",width="200"> </a>
+        </div>
+        <div class="box reviewb">
+          <span class="review-username" style="font-size:24px">
+            <%=item.name %>
+            </span>
+          <span class="title__date" style="float:right"><%=item.date %></span>
+        </div>
+      <div class="box reviewc">
+        
+        <p >Count: <%=item.count %></p>
+        <p >Total Price:$ <%=parseInt(item.price) %></p>
+       
+        
+<!--         <button v-text="btnText"  @click="review" style="float:right" ></button> -->
+      </div>
+    </div>
+  <br />
+  
+  
+<!--   <div v-show="!isShow">
+  <form action="#" method="post">
+	<div>
+		<textarea placeholder="review"></textarea>
+	</div>
+	<input type="button" value="submit">
+    
+</form>
+</div> -->
+  
+  
+   <% })%>
+
+</div>
+
+
+
+
+
+<!-- 	<script type="text/javascript">
+	new Vue({
+		el:"#user-transaction",
+		data:{
+			btnText:"Review this product",
+			isShow:true
+		},
+		methods:{
+			review:function(){
+				this.isShow = !this.isShow
+				if(this.isShow){
+					this.btnText = "Close the comment"
+				}else{
+					this.btnText = "Review this product"
+				}
+			}
+		}
+	})
+	</script> -->
+
+
+
+      </div>
+  
+  
+  
+</div>
+  </body>
+  
+</html>

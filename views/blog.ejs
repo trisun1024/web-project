@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blogs</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style_admin.css">
+
+
+</head>
+<body>
+    
+ <div class="wrap">
+    <h1>
+        Like More
+    </h1>
+
+    <div class="nav_top">
+        <div class="nav">
+            <ul>
+                <li><a href="/home">Homepage</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/communities">Communities</a></li>
+                <li style="float:right" class="nav_right"><a href="/profile">Profile</a></li>
+                <li style="float:right" class="nav_right"><a href="/logoff">Logoff</a></li>
+                <li style="float:right" class="nav_right"><a href="/cart">Cart</a></li>
+            </ul>
+        </div>
+    </div>
+       <div class="nav_top">
+        <div class="nav">
+            <ul>
+                <li style="float:right" class="nav_right"><a href="/blog-add">Post A New Blog</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+  
+  
+ <br>
+  <br>
+  <br>
+<div class="cards">
+  
+  <% if(blogs) { %>
+        <% blogs.forEach(function(blog){ %>
+            <div class="card">
+              <div class="content">
+                
+              <h3>
+                 <%= blog.community %>
+              </h3>
+                <h4>
+                    <%= blog.title %>
+                </h4>
+              <p>
+                <%= blog.username %>
+              </p>
+              <img src=" <%= blog.image %>" >
+                <p>
+                    <%= blog.content %>
+                </p>
+                <br>
+              </div>
+            </div>
+        <% }); %>
+   
+<% } %>
+  </div>
+
+
+
+<script src="https://button.glitch.me/button.js"></script>
+</body>
+</html>
+
+
